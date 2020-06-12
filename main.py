@@ -1,57 +1,17 @@
 import openpyxl
+import excel_utils
 
-filename = 'D:\moba_cts_test.xlsx'
-new_file = 'D:\moba_cts_test_1.xls'
+filename = filename = 'test/random.xlsx'
 
 wb = openpyxl.load_workbook(filename)
+sheet = wb.active
 
-# print(wb.sheetnames)
+new_sheet = excel_utils.find_and_delete_key(sheet, '0')
 
-# for sheet in wb:
-#     print(sheet.title)
-#
-# newSheet = wb.create_sheet('Sheet3')
-#
-# print(wb.sheetnames)
-#
-# sheet3 = wb.get_sheet_by_name('Sheet3')
-# sheet3 = wb['Sheet3']
 
-ws = wb.active
+for row in range(2, new_sheet.max_row + 1):
+    print(new_sheet.cell(row, 1).value)
 
-# print(ws)
-# print(ws['A1'])
-# print(ws['A1'].value)
-# c = ws['B1']
-# print('Row {}, Column {} is {}' .format(c.row, c.column, c.value))
-# print('Cell {}, is {}' .format(c.coordinate, c.value))
-# print(ws.cell(row=1, column=2))
-# print(ws.cell(row=1, column=2).value)
-
-# colC = ws['C']
-# for col in colC:
-#     print(col.value)
-#
-# row6 = ws[6]
-
-col_range = ws['B:C']
-row_range = ws[2:6]
-# for col in col_range:
-#     for cell in col:
-#         print(cell.value)
-#
-# for row in row_range:
-#     for cell in row:
-#         print(cell.value)
-
-# for row in ws.iter_rows(min_row=1, max_row=2, max_col=2):
-#     for cell in row:
-#         print(cell.value)
-
-# print(tuple(ws.rows))
-
-cell_range = ws['A1:C3']
-for rowOfCellObject in cell_range:
-    for cellObj in rowOfCellObject:
-        print(cellObj.coordinate, cellObj.value)
+# wb.create_sheet('new', 2)
+wb.save(filename)
 

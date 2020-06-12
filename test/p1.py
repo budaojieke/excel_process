@@ -49,15 +49,17 @@ row_range = ws[2:6]
 #         print(cell.value)
 
 # print(tuple(ws.rows))
+import random
 
-# cell_range = ws['A1:C3']
-# for rowOfCellObject in cell_range:
-#     for cellObj in rowOfCellObject:
-#         print(cellObj.coordinate, cellObj.value)
+cell_range = ws['A1:C20']
+for rowOfCellObject in cell_range:
+    for cellObj in rowOfCellObject:
+        cellObj.value = random.randint(0, 999999)
+        print(cellObj.coordinate, cellObj.value)
+wb.save('random.xlsx')
+# print('{}, {}' .format(ws.max_row, ws.max_column))
 
-print('{}, {}' .format(ws.max_row, ws.max_column))
-
-from openpyxl.utils import get_column_letter, column_index_from_string
-print(get_column_letter(2), get_column_letter(25))
+# from openpyxl.utils import get_column_letter, column_index_from_string
+# print(get_column_letter(2), get_column_letter(25))
 
 
