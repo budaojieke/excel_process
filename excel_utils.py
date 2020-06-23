@@ -28,7 +28,7 @@ def find_and_delete_key(workSheet, key, col=0):
 
 def delete_range(workSheet, end, start=-99):
     flag = 0
-    print(workSheet.max_row)
+    loge('max row %d', workSheet.max_row)
     for row in range(workSheet.max_row, 1, -1):
         data = workSheet.cell(row, 3).value
         if data == '--' or int(data) > start and data < end:
